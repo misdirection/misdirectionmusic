@@ -64,5 +64,5 @@ export default function PlayerNav({selectedTrack, playing, setPlaying } : Header
               {repeating ? <TbRepeat size="24px" /> : <TbRepeatOff size="24px" />}
             </button>
           </div>
-          );
+          )
 }

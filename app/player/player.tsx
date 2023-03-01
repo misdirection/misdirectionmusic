@@ -1,4 +1,4 @@
-"use client"
+'use client'
 import { useState } from "react";
 import { Howl } from "howler";
 import Playlist from "./playlist";

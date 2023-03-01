@@ -2,14 +2,14 @@
 
 
 ## powered by
-[NextJS](https://nextjs.org/)
-[NextAuth](https://next-auth.js.org/) 
-[Tailwind](https://tailwindcss.com/)
-[Prisma](https://www.prisma.io/)
+[NextJS](https://nextjs.org/) </br>
+[NextAuth](https://next-auth.js.org/) </br>
+[Tailwind](https://tailwindcss.com/) </br>
+[Prisma](https://www.prisma.io/) </br>
 
 
 ## Docs:
-[NextJS Beta Docs](https://beta.nextjs.org/docs)
-[NextAuth](https://next-auth.js.org/getting-started/introduction) 
-[Tailwind](https://tailwindcss.com/docs/installation)
-[https://www.prisma.io/](https://www.prisma.io/docs)
+[NextJS Beta Docs](https://beta.nextjs.org/docs) </br>
+[NextAuth](https://next-auth.js.org/getting-started/introduction) </br>
+[Tailwind](https://tailwindcss.com/docs/installation) </br>
+[Prisma](https://www.prisma.io/docs) </br>

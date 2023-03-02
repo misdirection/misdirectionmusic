@@ -4,14 +4,10 @@ import { TbRepeatOff, TbRepeatOnce, TbRepeat } from "react-icons/tb"
 import { ChangeEventHandler, Dispatch, SetStateAction, useState } from "react";
 import { Howl, Howler } from "howler";
 
-type HeaderProps = {
-    selectedTrack : Howl | null, 
-    playing : boolean,
-    setPlaying : Dispatch<SetStateAction<boolean>>,
-}
 
-
-export default function PlayerNav({selectedTrack, playing, setPlaying } : HeaderProps) {
+export default function PlayerNav() {
+  const [selectedTrack, setSelectedTrack] = useState<Howl | null>(new Howl({src:"music/stuff.mp3"}));
+  const [playing, setPlaying] = useState(false);
     const [repeating, setRepeating] = useState(false);
     const handleVolumeChange : ChangeEventHandler<HTMLInputElement> = (e) => {
         Howler.volume(parseInt(e.target.value, 10) / 100)

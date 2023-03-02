@@ -1,19 +1,13 @@
 import PlayListHeader from "./playlistheader";
 import { Dispatch, SetStateAction } from "react";
 import { Howl } from "howler";
+import { TrackData } from "./player";
+import Track from "./track";
 
-
-
-
-export default function PlayList({
-    playing,
-    setPlaying,
-    repeating,
-    selectedHowl,
-    setSelectedHowl,
-  } : TrackListProps) {
-    //const data = getTracks();
-    // console.log(data);
+export interface TrackListProps {
+  tracks: TrackData[];
+ }
+export default function PlayList( {tracks} : TrackListProps) {
     return (
       <div className="w-full mx-auto px-4 py-2">
         <PlayListHeader />
@@ -22,11 +16,7 @@ export default function PlayList({
           return (
             <Track
               key={track.id}
-              track={track}
-              playing={playing}
-              setPlaying={setPlaying}
-              repeating={repeating}
-              isFirstTrack={idx === 0}
+              trackData={track}             
             />
           );
         })}

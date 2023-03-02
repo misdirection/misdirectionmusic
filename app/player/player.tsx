@@ -1,8 +1,9 @@
-'use client'
-import { useState } from "react";
-import { Howl } from "howler";
 import Playlist from "./playlist";
 import PlayerNav from "./nav";
+
+export interface UsersListProps {
+  tracks: TrackData[];
+ }
 
 export type TrackData = {
     id: number,
@@ -44,17 +45,21 @@ export type TrackData = {
     },
   ];
 
-
-export default function Player() {
-  const [selectedTrack, setSelectedTrack] = useState<Howl | null>(new Howl({src:"music/stuff.mp3"}));
-  const [playing, setPlaying] = useState(false);
-
+  async function getData() {
+    const res = await fetch('http://localhost:3000/api/tracks');
+    if (!res.ok) {
+      throw new Error('Failed to fetch data');
+    }
+    return res.json();
+  }
+  
+export default async function Player() {
+  const tracktest: TrackData[] = await getData();
+  console.log(tracktest)
   return (
     <div>
-    <PlayerNav 
-    selectedTrack={selectedTrack} 
-    playing={playing} 
-    setPlaying={setPlaying} />
+    <Playlist tracks={tracktest} />
+    <PlayerNav />
     </div>
   );
 }

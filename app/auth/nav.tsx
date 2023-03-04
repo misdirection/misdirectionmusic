@@ -6,7 +6,6 @@ import { authOptions } from "@/app/api/auth/[...nextauth]";
 
 export default async function Nav() {
     const session = await getServerSession(authOptions)
-    console.log(session ? session : "No logged in user found")
     return(
         <nav className="flex justify-between items-center py-8">
             <Link href={"/"}>

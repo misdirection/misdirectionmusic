@@ -1,15 +1,15 @@
 -- CreateTable
-CREATE TABLE "Albums" (
+CREATE TABLE "Album" (
     "id" TEXT NOT NULL,
     "title" TEXT NOT NULL,
     "artist" TEXT NOT NULL,
     "imgSrc" TEXT,
 
-    CONSTRAINT "Albums_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "Album_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
-CREATE TABLE "Tracks" (
+CREATE TABLE "Track" (
     "id" TEXT NOT NULL,
     "src" TEXT NOT NULL,
     "title" TEXT NOT NULL,
@@ -18,7 +18,7 @@ CREATE TABLE "Tracks" (
     "imgSrc" TEXT,
     "duration" TEXT NOT NULL,
 
-    CONSTRAINT "Tracks_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "Track_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -83,7 +83,7 @@ CREATE UNIQUE INDEX "VerificationToken_token_key" ON "VerificationToken"("token"
 CREATE UNIQUE INDEX "VerificationToken_identifier_token_key" ON "VerificationToken"("identifier", "token");
 
 -- AddForeignKey
-ALTER TABLE "Tracks" ADD CONSTRAINT "Tracks_albumId_fkey" FOREIGN KEY ("albumId") REFERENCES "Albums"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE "Track" ADD CONSTRAINT "Track_albumId_fkey" FOREIGN KEY ("albumId") REFERENCES "Album"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Account" ADD CONSTRAINT "Account_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;

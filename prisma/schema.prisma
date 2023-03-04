@@ -12,20 +12,20 @@ datasource db {
 
 
 //Music
-model Albums {
+model Album {
   id           String  @id @default(cuid())
   title        String
   artist       String
   imgSrc       String?
-  Tracks       Tracks[]
+  Track        Track[]
 }
 
-model Tracks {
+model Track {
   id           String    @id @default(cuid())
   src          String
   title        String
   artist       String
-  album        Albums? @relation(fields: [albumId], references: [id])
+  album        Album? @relation(fields: [albumId], references: [id])
   albumId      String?
   imgSrc       String?
   duration     String

@@ -1,6 +1,4 @@
 import PlayListHeader from "./playlistheader";
-import { Dispatch, SetStateAction } from "react";
-import { Howl } from "howler";
 import Track from "./track";
 import {Album, Track as TrackModel} from "@prisma/client"
 

@@ -1,13 +1,19 @@
+"use client"
 import React, { Dispatch, MouseEventHandler, SetStateAction, useEffect, useState } from "react";
 import { BsPlayFill, BsPauseFill } from "react-icons/bs";
 import { Track as TrackModel } from "@prisma/client"
+import { usePlayerStore } from "../store/store"
+
 interface Props {
   trackData: TrackModel
   albumTitle: string
 }
+
 export default function Track( { trackData, albumTitle }: Props) {
+  const playTrack = usePlayerStore((state) => state.playNewTrack)
+  console.log(trackData.src)
   return (
-    <div
+    <div onClick={() => {playTrack(trackData.src)}} 
       className="grid grid-cols-player mx-auto px-4 py-2 rounded-sm transition-colors hover:bg-hover cursor-pointer" >
       <div className="col-span-1 flex items-center">
         <img src={trackData.imgSrc ? trackData.imgSrc : ""} alt="Album Cover" className="w-[40px] h-[40px] ml-2" />

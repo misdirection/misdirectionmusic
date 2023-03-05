@@ -1,36 +1,17 @@
 'use client'
 import { BsPauseFill, BsPlayFill } from "react-icons/bs"
 import { TbRepeatOff, TbRepeatOnce, TbRepeat } from "react-icons/tb"
-import { ChangeEventHandler, Dispatch, SetStateAction, useState } from "react";
-import { Howl, Howler } from "howler";
-
+import { ChangeEventHandler } from "react";
+import { Howler } from "howler";
+import { usePlayerStore } from "../store/store"
 
 export default function PlayerNav() {
-  const [selectedTrack, setSelectedTrack] = useState<Howl | null>(new Howl({src:"music/stuff.mp3"}));
-  const [playing, setPlaying] = useState(false);
-    const [repeating, setRepeating] = useState(false);
-    const handleVolumeChange : ChangeEventHandler<HTMLInputElement> = (e) => {
-        Howler.volume(parseInt(e.target.value, 10) / 100)
-      };
-
-      const togglePlay = () => {
-        if (!selectedTrack) return
-    
-        if (playing) {
-            selectedTrack.pause();
-            setPlaying(false)
-        } else {
-            selectedTrack.play();
-            setPlaying(true)
-        }
-      };
-    
-      const toggleRepeat = () => {
-        if (!selectedTrack) return
-        setRepeating(!repeating)
-        selectedTrack.loop(!repeating)
-      };
-
+  const currentTrack = usePlayerStore((state) => state.currentTrack)
+  const {playing, togglePlay} = usePlayerStore()
+  const {repeating, loopTrack} = usePlayerStore()
+  
+  const handleVolumeChange : ChangeEventHandler<HTMLInputElement> = (e) => {
+    Howler.volume(parseInt(e.target.value, 10) / 100)}
 
     return (
           <div className="flex items-center">
@@ -41,22 +22,12 @@ export default function PlayerNav() {
               onChange={handleVolumeChange}
               className="cursor-pointer"
             />
-            {/* <button
-              className="text-textLight bg-brand p-2 rounded-full ml-4"
-              onClick={togglePlay} >
-              {playing ? <BsPauseFill size="24px" /> : <BsPlayFill size="24px" />}
-            </button>
-            <button
-              className="text-textLight bg-brand p-2 rounded-full ml-4"
-              onClick={togglePlay} >
-              {playing ? <BsPauseFill size="24px" /> : <BsPlayFill size="24px" />}
-            </button> */}
-            <button disabled={selectedTrack === null}
+            <button disabled={currentTrack === null}
               className="text-textLight bg-brand p-2 rounded-full ml-4 disabled:bg-slate-50 disabled:text-slate-500"
-              onClick={togglePlay} >
+              onClick={() => {togglePlay()}}>
               {playing ? <BsPauseFill size="24px" /> : <BsPlayFill size="24px" />}
             </button>
-            <button onClick={toggleRepeat} className='p-2 rounded-full ml-4 bg-black text-textLight' >
+            <button onClick={()=>loopTrack(!repeating)} className='p-2 rounded-full ml-4 bg-black text-textLight' >
               {repeating ? <TbRepeat size="24px" /> : <TbRepeatOff size="24px" />}
             </button>
           </div>

@@ -2,7 +2,7 @@
 import React, { Dispatch, MouseEventHandler, SetStateAction, useEffect, useState } from "react";
 import { BsPlayFill, BsPauseFill } from "react-icons/bs";
 import { Track as TrackModel } from "@prisma/client"
-import { usePlayerStore } from "../store/store"
+import { usePlayerStore } from "../../store/store"
 
 interface Props {
   trackData: TrackModel

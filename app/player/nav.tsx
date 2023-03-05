@@ -3,7 +3,7 @@ import { BsPauseFill, BsPlayFill } from "react-icons/bs"
 import { TbRepeatOff, TbRepeatOnce, TbRepeat } from "react-icons/tb"
 import { ChangeEventHandler } from "react";
 import { Howler } from "howler";
-import { usePlayerStore } from "../store/store"
+import { usePlayerStore } from "../../store/store"
 
 export default function PlayerNav() {
   const currentTrack = usePlayerStore((state) => state.currentTrack)

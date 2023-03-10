@@ -1,6 +1,6 @@
 import { BsClock } from "react-icons/bs";
 
-export default function PlayListHeader()
+export default function PlayNextHeader()
 {
     return(
     <div className="grid grid-cols-player mx-auto py-2 px-4 mb-2 border-b-[1px] border-border">

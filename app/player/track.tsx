@@ -1,22 +1,21 @@
 "use client"
-import React, { Dispatch, MouseEventHandler, SetStateAction, useEffect, useState } from "react";
-import { BsPlayFill, BsPauseFill } from "react-icons/bs";
 import { Track as TrackModel } from "@prisma/client"
 import { usePlayerStore } from "../../store/store"
+import Image from "next/image"
 
 interface Props {
   trackData: TrackModel
   albumTitle: string
+  index: number
 }
 
-export default function Track( { trackData, albumTitle }: Props) {
-  const playTrack = usePlayerStore((state) => state.playNewTrack)
-  console.log(trackData.src)
+export default function Track( { trackData, albumTitle,index }: Props) {
+  const { setCurrentTrackIndex } = usePlayerStore()
   return (
-    <div onClick={() => {playTrack(trackData.src)}} 
+    <div onClick={() => {setCurrentTrackIndex(index)}}
       className="grid grid-cols-player mx-auto px-4 py-2 rounded-sm transition-colors hover:bg-hover cursor-pointer" >
       <div className="col-span-1 flex items-center">
-        <img src={trackData.imgSrc ? trackData.imgSrc : ""} alt="Album Cover" className="w-[40px] h-[40px] ml-2" />
+        <Image src={trackData.imgSrc ? trackData.imgSrc : ""} alt="Album Cover" className="w-[40px] h-[40px] ml-2" />
       </div>
       <div className="col-span-5 flex flex-col items-start justify-start">
         <span className="font-semibold">{trackData.title}</span>

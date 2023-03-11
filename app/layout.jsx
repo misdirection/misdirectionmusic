@@ -1,8 +1,8 @@
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]";
 import './globals.css'
-import Player from './player/player'
-import Nav from '@/app/auth/nav'
+import Player from '@/app/components/player/player'
+import Nav from '@/app/components/auth/nav'
 
 export const metadata = {
   title: 'Misdirection Music',

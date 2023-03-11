@@ -3,15 +3,19 @@ import Login from "./login";
 import Logout from "./logout"
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]";
+import Logo from "../icons/Logo";
 
 export default async function Nav() {
     const session = await getServerSession(authOptions)
     return(
-        <nav className="flex justify-between items-center py-8">
+        <nav className="flex justify-between items-center py-2 px-8 ">
             <Link href={"/"}>
-                <h1 className="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
-                    Misdirection Music
-                </h1>
+                <div className="flex">
+                  <Logo />
+                  <h1 className="text-3xl font-bold text-gray-900 md:text-5xl lg:text-2xl ml-2">
+                      Misdirection Music
+                  </h1>
+                </div>
             </Link>
             {session ? 
             <ul className="flex items-center gap-6"> 

@@ -16,6 +16,9 @@ module.exports = {
         textFaded: "#ABABAB",
         border: "#313131",
       },
+      dropShadow: {
+        playButtons: "0 10px 20px rgba(139, 92, 246, 0.5)",
+      },
       gridTemplateColumns: {
         player: "85px repeat(10, minmax(0, 1fr)) 85px;",
       },

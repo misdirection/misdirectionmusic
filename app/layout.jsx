@@ -16,13 +16,14 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="flex flex-col h-screen overflow-hidden">
-        <div className="border-b border-gray-300" >
+        <div className="border-b border-gray-300 bg-gray-200" >
         <Nav />
         </div>
-        <div className="flex-1 overflow-y-scroll">
+        <div className="flex-1 overflow-y-scroll overflow-hidden">
           {children}
         </div>
-        {session? <Player />  : ""}
+        <Player />
+        {/* {session? <Player />  : ""} */}
       </body>
     </html>
   )

@@ -8,7 +8,7 @@ import Logo from "../icons/Logo";
 export default async function Nav() {
     const session = await getServerSession(authOptions)
     return(
-        <nav className="flex justify-between items-center py-2 px-8 ">
+        <nav className="flex justify-between items-center py-2 px-10 ">
             <Link href={"/"}>
                 <div className="flex">
                   <Logo />

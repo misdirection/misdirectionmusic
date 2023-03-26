@@ -1,9 +1,10 @@
+import Card from "./components/album";
+
 export default function Home() {
   return (
-    <main>
-      <h1 className="text-3xl font-bold underline">
-        Hello world!<p />
-      </h1>
+    <main className="p-10 h-full">
+      <h2 className="text-3xl text-gray-900 font-bold my-4">Albums</h2>
+      <Card />
     </main>
   )
 }

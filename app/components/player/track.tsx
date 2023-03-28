@@ -1,6 +1,6 @@
 "use client"
 import { Track as TrackModel } from "@prisma/client"
-import { usePlayerStore } from "../../store/store"
+import { usePlayerStore } from "@/store/store"
 import Image from "next/image"
 import { MouseEventHandler } from "react"
 

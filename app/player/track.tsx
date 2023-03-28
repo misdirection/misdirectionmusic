@@ -2,6 +2,7 @@
 import { Track as TrackModel } from "@prisma/client"
 import { usePlayerStore } from "../../store/store"
 import Image from "next/image"
+import { MouseEventHandler } from "react"
 
 interface Props {
   trackData: TrackModel
@@ -11,8 +12,16 @@ interface Props {
 
 export default function Track( { trackData, albumTitle,index }: Props) {
   const { setCurrentTrackIndex } = usePlayerStore()
+  const { isPlaying, setIsPlaying } = usePlayerStore()
+
+  const handleTrackClicked : MouseEventHandler<HTMLElement> = (e) => {
+   setCurrentTrackIndex(index)
+   if(!isPlaying)
+    setIsPlaying(true)
+   }
+
   return (
-    <div onClick={() => {setCurrentTrackIndex(index)}}
+    <div onClick={handleTrackClicked}
       className="grid grid-cols-player mx-auto px-4 py-2 rounded-sm transition-colors hover:bg-hover cursor-pointer" >
       <div className="col-span-1 flex items-center">
         <Image src={trackData.imgSrc ? trackData.imgSrc : ""} alt="Album Cover" className="w-[40px] h-[40px] ml-2" />

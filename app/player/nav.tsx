@@ -10,6 +10,7 @@ export default function PlayerNav() {
   const { currentTrackIndex, setCurrentTrackIndex }  = usePlayerStore();
   const { repeating, toggleRepeating }  = usePlayerStore();
   const soundRef = useRef<Howl | null>(null);
+  
   useEffect(() => {
     soundRef.current = new Howl({
       src: playNextList[currentTrackIndex].src,
@@ -28,29 +29,28 @@ export default function PlayerNav() {
         handleNextTrack();
       },
     });
-    
-    if (isPlaying) {
-      soundRef.current.play();
-    } else {
-      soundRef.current.pause();
-    }
-
+    soundRef.current.play()
     return () => {
       if (soundRef.current) {
         soundRef.current.unload();
       }
     };
-  }, [currentTrackIndex,isPlaying]);
+  }, [currentTrackIndex]);
 
   const handleNextTrack = () => {
+    let isPlaying = true;
     if(repeating === Repeat.One && soundRef.current){
       soundRef.current.play();
     } else if (currentTrackIndex === playNextList.length - 1) {
-      if(repeating === Repeat.All)
-        setCurrentTrackIndex(0);
+      if(repeating === Repeat.All){
+        setCurrentTrackIndex(0)
+      }else{
+        isPlaying = false
+      }
     } else {
       setCurrentTrackIndex(currentTrackIndex + 1);
     }
+    setIsPlaying(isPlaying)
   };
   
   const handleVolumeChange : ChangeEventHandler<HTMLInputElement> = (e) => {
